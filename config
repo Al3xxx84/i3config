@@ -12,11 +12,11 @@
 set $mod Mod4
 exec --no-startup-id dex --autostart --environment i3
 exec --no-startup-id sh ~/.config/polybar/launch.sh
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock-fancy --nofork
+#exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock-fancy --nofork
 exec --no-startup-id nm-applet
 exec --no-startup-id udiskie &
 exec --no-startup-id pcmanfm -d
-for_window [class="^.*"] border pixel 2
+for_window [class="^.*"] border normal 2
 gaps inner 10
 gaps outer 10
 
@@ -24,7 +24,7 @@ bindsym $mod+z		gaps outer current plus  5
 bindsym $mod+Shift+z	gaps outer current minus 5
 
 # sets the wallpaper
-exec --no-startup-id feh --bg-fill ~/.config/i3/wallpapers/gruv-hill.png
+exec --no-startup-id feh --bg-fill ~/.config/i3/wallpapers/bus.jpg
 # starts the compositor
 exec --no-startup-id picom --config ~/.config/picom/picom.conf 
 # Use pactl to adjust volume in PulseAudio.
@@ -39,7 +39,7 @@ for_window [class="krunner"] floating enable
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec alacritty
+bindsym $mod+Return exec kitty
 
 # start the launcher
 bindsym $mod+d exec rofi -show drun
@@ -81,6 +81,9 @@ bindsym $mod+space focus mode_toggle
 
 # focus the parent container
 bindsym $mod+a focus parent
+
+#Screenshot
+bindsym Shift+Print exec flameshot gui
 
 # font in use by i3
 font pango:JetbrainsMono Nerd Font 11
@@ -150,11 +153,11 @@ mode "resize" {
         bindsym $mod+r mode "default"
 }
 # class                 border  backgr. text    indicator child_border
-client.focused          #282828 #282828 #83a598  #83a598   #458588
-client.focused_inactive #282828 #282828 #ebdbb2  #d3869b   #5f676a
-client.unfocused        #1d2021 #282828 #ebdbb2  #282828   #1d2021
-client.urgent           #cc241c #928364 #ebdbb2  #cc241c   #cc241c
-client.placeholder      #8ec07c #0c0c0c #ebdbb2  #ebdbb2   #1d2021  
+client.focused          #cba6f7 #96CDFB #FFFFFF  #ABE9B3   #cba6f7
+client.focused_inactive #6E6C7E #6E6C7E #FFFFFF  #ABE9B3   #96CDFB
+client.unfocused        #1E1E2E #1E1E2E #FFFFFF  #1E1E2E   #1E1E2E
+client.urgent           #ABE9B3 #ABE9B3 #FFFFFF  #96CDFB   #B5E8E0
+client.placeholder      #8ec07c #0c0c0c #FFFFFF  #ebdbb2   #1d2021  
 
 client.background      #fbf1c7 
 
@@ -164,5 +167,6 @@ bindsym $mod+r mode "resize"
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
+
 
 
